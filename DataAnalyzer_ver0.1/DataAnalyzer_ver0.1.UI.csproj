@@ -10,12 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <ProjectReference Include="..\DataAnalyzer_ver0.1.Common\DataAnalyzer_ver0.1.Common.csproj" />
+    <ProjectReference Include="..\DataAnalyzer_ver0.1.Services\DataAnalyzer_ver0.1.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DataAnalyzer_ver0.1.Common\DataAnalyzer_ver0.1.Common.csproj" />
-    <ProjectReference Include="..\DataAnalyzer_ver0.1.Services\DataAnalyzer_ver0.1.Services.csproj" />
+    <Folder Include="Resources\" />
   </ItemGroup>
 
 </Project>
