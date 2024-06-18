@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using DataAnalyzer_ver0._1.Services.Simulation;
 
 namespace DataAnalyzer_ver0._1.UI.ViewModels
 {
@@ -19,6 +20,7 @@ namespace DataAnalyzer_ver0._1.UI.ViewModels
         private readonly IDataAnalyzerService _dataAnalyzerService;
         private readonly IDataProcessorService _dataProcessorService;
         private readonly IDataReaderService _dataReaderService;
+
 
         private FPGADataModel _fpgaData;
         public FPGADataModel FPGAData
@@ -82,12 +84,20 @@ namespace DataAnalyzer_ver0._1.UI.ViewModels
 
         private async Task StartDataAcquisition()
         {
-            const string usbPath = "Path_to_your_usb_device";
-            int dataSize = 50;
+            //const string usbPath = "Path_to_your_usb_device";
+
+            int dataSize = 500;
+            double amplitude = 1.0;
+            double frequency = 10.0;
+            double samplingRate = 1000;
+            double duration = dataSize / samplingRate;
 
             try
             {
-                byte[] rawData = await _dataReaderService.ReadGeneratedMockDataAsync(dataSize);
+                double[] waveform = SinusoidalDataGenerator.GenerateSinusoidalWaveform(amplitude, frequency, samplingRate, duration);
+                byte[] rawData = await DataAcquisitionSimulator.SimulateDataAcquisition(waveform);
+
+                //byte[] rawData = await _dataReaderService.ReadGeneratedMockDataAsync(dataSize);
                 var processedData = await _dataProcessorService.ProcessedDataAsync(rawData);
                 var analysisResult = await _dataAnalyzerService.AnalyzeDataAsync(processedData);
 

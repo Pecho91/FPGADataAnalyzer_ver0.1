@@ -15,7 +15,7 @@ namespace DataAnalyzer_ver0._1.DataAnalyzer.DataProcessor.Data
 
             for(int i = 0; i < rawData.Length; i++)
             {
-                voltageLevels[i] = rawData[i] * 0.1; //example conversion
+                voltageLevels[i] = rawData[i] * 1; //example conversion
             }
 
             return new ProcessedData
