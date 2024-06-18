@@ -1,14 +1,18 @@
 ﻿using DataAnalyzer_ver0._1.Common.Models;
-using DataAnalyzer_ver0._1.RelayCommands;
+using DataAnalyzer_ver0._1.Common.Processing;
+using DataAnalyzer_ver0._1.UI.RelayCommands;
 using DataAnalyzer_ver0._1.Services.Interfaces;
+using OxyPlot;
+using OxyPlot.Series;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace DataAnalyzer_ver0._1.ViewModels
+namespace DataAnalyzer_ver0._1.UI.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
@@ -24,9 +28,42 @@ namespace DataAnalyzer_ver0._1.ViewModels
             {
                 _fpgaData = value;
                 OnPropertyChanged(nameof(FPGAData));
+                UpdatePlot(FPGAData.ProcessedData.VoltageLevels);
             }
         }
 
+        private double _peakVoltage;
+        public double PeakVoltage
+        {
+            get => _peakVoltage;
+            set
+            {
+                _peakVoltage = value;
+                OnPropertyChanged(nameof(PeakVoltage));
+            }
+        }
+
+        private double _averageVoltage;
+        public double AverageVoltage
+        {
+            get => _averageVoltage;
+            set
+            {
+                _averageVoltage = value;
+                OnPropertyChanged(nameof(AverageVoltage));
+            }
+        }
+
+        private PlotModel _plotModel;
+        public PlotModel PlotModel
+        {
+            get => _plotModel;
+            set
+            {
+                _plotModel = value;
+                OnPropertyChanged(nameof(PlotModel));
+            }
+        }
         public ICommand StartDataAcquisitionCommand { get; set; }
 
         public MainViewModel(IDataAnalyzerService dataAnalyzerService, IDataProcessorService processorService, IDataReaderService readerService)
@@ -36,7 +73,11 @@ namespace DataAnalyzer_ver0._1.ViewModels
             _dataReaderService = readerService;
 
             StartDataAcquisitionCommand = new RelayCommand(async () => await StartDataAcquisition());
-           
+
+            PlotModel = new PlotModel { Title = "Oscilloscope" };
+            var lineSeries = new LineSeries { Title = "Voltage" };
+            PlotModel.Series.Add(lineSeries);
+
         }
 
         private async Task StartDataAcquisition()
@@ -55,35 +96,32 @@ namespace DataAnalyzer_ver0._1.ViewModels
                     ProcessedData = processedData
                 };
 
-                //Update UI
                 PeakVoltage = analysisResult.PeakVoltage;
                 AverageVoltage = analysisResult.AverageVoltage;
+
+                UpdatePlot(processedData.VoltageLevels);
             }
             catch (Exception ex)
             {
-                //handle exception
+                Debug.WriteLine($"An error occurred: {ex.Message}");
             }
         }
 
-        private double _peakVoltage;
-        public double PeakVoltage
-        {
-            get => _peakVoltage;
-            set
-            {
-                _peakVoltage = value;
-                OnPropertyChanged(nameof(PeakVoltage));
-            }
-        }
+       
 
-        private double _averageVoltage;
-        public double AverageVoltage
+        private void UpdatePlot(double[] voltageLevels)
         {
-            get => _peakVoltage;
-            set
+            if(voltageLevels != null)
             {
-                _peakVoltage = value;
-                OnPropertyChanged(nameof(AverageVoltage));
+                var lineSeries = (LineSeries)PlotModel.Series[0];
+                lineSeries.Points.Clear();
+
+                for(int i = 0; i < voltageLevels.Length; i++)
+                {
+                    lineSeries.Points.Add(new DataPoint(i, voltageLevels[i]));
+                }
+
+                PlotModel.InvalidatePlot(true);
             }
         }
     }

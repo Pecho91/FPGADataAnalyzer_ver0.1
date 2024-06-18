@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using DataAnalyzer_ver0._1.Services.Implementations;
+using DataAnalyzer_ver0._1.UI.ViewModels;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -9,7 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace DataAnalyzer_ver0._1.UI
+namespace DataAnalyzer_ver0._1.UI.Views
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -19,6 +21,12 @@ namespace DataAnalyzer_ver0._1.UI
         public MainWindow()
         {
             InitializeComponent();
+
+            var dataAnalyzerService = new DataAnalyzerService();
+            var dataProcessorService = new DataProcessorService();
+            var dataReaderService = new DataReaderService();
+
+            DataContext = new MainViewModel(dataAnalyzerService, dataProcessorService, dataReaderService);
         }
     }
 }

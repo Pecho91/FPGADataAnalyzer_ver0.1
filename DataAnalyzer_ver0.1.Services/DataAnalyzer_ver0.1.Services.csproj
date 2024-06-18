@@ -16,4 +16,8 @@
     <Folder Include="Locators\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="OxyPlot.Wpf" Version="2.1.2" />
+  </ItemGroup>
+
 </Project>

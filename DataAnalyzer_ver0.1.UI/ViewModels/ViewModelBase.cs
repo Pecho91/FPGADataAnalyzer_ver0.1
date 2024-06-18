@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAnalyzer_ver0._1.ViewModels
+namespace DataAnalyzer_ver0._1.UI.ViewModels
 {
     public abstract class ViewModelBase : INotifyPropertyChanged
     {

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace DataAnalyzer_ver0._1.RelayCommands
+namespace DataAnalyzer_ver0._1.UI.RelayCommands
 {
     public class RelayCommand : ICommand
     {
