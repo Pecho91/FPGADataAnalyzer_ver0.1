@@ -83,10 +83,11 @@ namespace DataAnalyzer_ver0._1.UI.ViewModels
         private async Task StartDataAcquisition()
         {
             const string usbPath = "Path_to_your_usb_device";
+            int dataSize = 50;
 
             try
             {
-                byte[] rawData = await _dataReaderService.ReadDataAsync(usbPath);
+                byte[] rawData = await _dataReaderService.ReadGeneratedMockDataAsync(dataSize);
                 var processedData = await _dataProcessorService.ProcessedDataAsync(rawData);
                 var analysisResult = await _dataAnalyzerService.AnalyzeDataAsync(processedData);
 
@@ -106,8 +107,6 @@ namespace DataAnalyzer_ver0._1.UI.ViewModels
                 Debug.WriteLine($"An error occurred: {ex.Message}");
             }
         }
-
-       
 
         private void UpdatePlot(double[] voltageLevels)
         {

@@ -9,7 +9,9 @@ namespace DataAnalyzer_ver0._1.Services.Interfaces
 {
     public interface IDataReaderService
     {
-        Task<byte[]> ReadDataAsync(string usbDevicePath);   
+        Task<byte[]> ReadDataAsync(string usbDevicePath);
+
+        Task<byte[]> ReadGeneratedMockDataAsync(int dataSize);
         
     }
 }

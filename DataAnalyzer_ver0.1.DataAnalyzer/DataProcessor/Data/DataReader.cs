@@ -13,5 +13,10 @@ namespace DataAnalyzer_ver0._1.DataAnalyzer.DataProcessor.Data
         {
             return USBHelper.ReadFromUSB(usbDevicePath);
         }
+
+        public byte[] ReadGeneratedMockData(int dataSize)
+        {
+            return USBHelper.GenerateMockData(dataSize);
+        }
     }
 }

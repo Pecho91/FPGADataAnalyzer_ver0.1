@@ -21,5 +21,10 @@ namespace DataAnalyzer_ver0._1.Services.Implementations
         {
             return await Task.Run(() => _dataReader.ReadDataFromUSB(usbDevicePath));
         }
+
+        public async Task<byte[]> ReadGeneratedMockDataAsync(int dataSize)
+        {
+            return await Task.Run(() => _dataReader.ReadGeneratedMockData(dataSize));
+        }
     }
 }
