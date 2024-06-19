@@ -1,4 +1,5 @@
 ﻿using DataAnalyzer_ver0._1.Common.Processing;
+using DataAnalyzer_ver0._1.DataAnalyzer.DataProcessor.Analysis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace DataAnalyzer_ver0._1.Services.Interfaces
 {
-    public interface IDataProcessorService
+    public interface IUSBDataAnalyzerService
     {
-        Task<USBProcessedData> ProcessedDataAsync(byte[] rawData);
+        Task<USBAnalysisResult> AnalyzeDataAsync(ProcessedData processedData);
     }
 }

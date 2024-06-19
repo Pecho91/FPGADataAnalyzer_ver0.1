@@ -11,15 +11,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using DataAnalyzer_ver0._1.Services.Simulation;
+
 
 namespace DataAnalyzer_ver0._1.UI.ViewModels
 {
-    public class MainViewModel : ViewModelBase
+    public class OscilloscopeViewModel : ViewModelBase
     {
-        private readonly IDataAnalyzerService _dataAnalyzerService;
-        private readonly IDataProcessorService _dataProcessorService;
-        private readonly IDataReaderService _dataReaderService;
+        private readonly IUSBDataAnalyzerService _dataAnalyzerService;
+        private readonly IUSBDataProcessorService _dataProcessorService;
+        private readonly IUSBDataReaderService _dataReaderService;
 
 
         private FPGADataModel _fpgaData;
@@ -68,7 +68,7 @@ namespace DataAnalyzer_ver0._1.UI.ViewModels
         }
         public ICommand StartDataAcquisitionCommand { get; set; }
 
-        public MainViewModel(IDataAnalyzerService dataAnalyzerService, IDataProcessorService processorService, IDataReaderService readerService)
+        public MainViewModel(IUSBDataAnalyzerService dataAnalyzerService, IUSBDataProcessorService processorService, IUSBDataReaderService readerService)
         {
             _dataAnalyzerService = dataAnalyzerService;
             _dataProcessorService = processorService;

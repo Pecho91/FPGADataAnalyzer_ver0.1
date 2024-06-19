@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAnalyzer_ver0._1.Services.Interfaces
 {
-    public interface IDataReaderService
+    public interface IUSBDataReaderService
     {
         Task<byte[]> ReadDataAsync(string usbDevicePath);
 

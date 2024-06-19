@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAnalyzer_ver0._1.Common.Processing
 {
-    public class FT232ProcessedData
+    public class FT232ProcessedDataModel
     {
         public bool[] BooleanLevels { get; set; }
     }

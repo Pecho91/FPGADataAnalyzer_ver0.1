@@ -9,7 +9,7 @@ namespace DataAnalyzer_ver0._1.DataAnalyzer.DataProcessor.USBData
 {
     public class USBDataProcessor
     {
-        public USBProcessedData ProcessRawData(byte[] rawData)
+        public USBProcessedDataModel ProcessRawData(byte[] rawData)
         {
 
             double[] voltageLevels = new double[rawData.Length];
@@ -19,7 +19,7 @@ namespace DataAnalyzer_ver0._1.DataAnalyzer.DataProcessor.USBData
                 voltageLevels[i] = rawData[i]; //example conversion
             }
 
-            return new ProcessedDataUSB
+            return new USBProcessedDataModel
             {
                 VoltageLevels = voltageLevels,
                 SamplingRate = 1000 //example sampling rate

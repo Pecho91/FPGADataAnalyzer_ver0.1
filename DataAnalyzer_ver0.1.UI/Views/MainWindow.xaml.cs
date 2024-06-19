@@ -22,9 +22,9 @@ namespace DataAnalyzer_ver0._1.UI.Views
         {
             InitializeComponent();
 
-            var dataAnalyzerService = new DataAnalyzerService();
-            var dataProcessorService = new DataProcessorService();
-            var dataReaderService = new DataReaderService();
+            var dataAnalyzerService = new USBDataAnalyzerService();
+            var dataProcessorService = new USBDataProcessorService();
+            var dataReaderService = new USBDataReaderService();
 
             DataContext = new MainViewModel(dataAnalyzerService, dataProcessorService, dataReaderService);
         }

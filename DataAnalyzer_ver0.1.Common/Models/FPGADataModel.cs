@@ -11,7 +11,7 @@ namespace DataAnalyzer_ver0._1.Common.Models
     {
         public byte[] RawData { get; set; }
 
-        public FT232ProcessedData ProcessedDataFT232 { get; set; }
-        public USBProcessedData ProcessedDataUSB { get; set; }
+        public FT232ProcessedDataModel ProcessedDataFT232 { get; set; }
+        public USBProcessedDataModel ProcessedDataUSB { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace DataAnalyzer_ver0._1.DataAnalyzer.DataProcessor.FT232Data
         {
             _ft232Helper = ft232Helper;
         }
-        public byte[] ReadDataFromT232(uint bufferSize)
+        public byte[] ReadDataFromFT232(uint bufferSize)
         {
             return _ft232Helper.ReadDataFromFT232(bufferSize);
         }

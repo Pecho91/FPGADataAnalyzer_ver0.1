@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAnalyzer_ver0._1.Common.Processing
 {
-    public class USBProcessedData
+    public class USBProcessedDataModel
     {
         public double[] VoltageLevels { get; set; }
         public double SamplingRate { get; set; }
