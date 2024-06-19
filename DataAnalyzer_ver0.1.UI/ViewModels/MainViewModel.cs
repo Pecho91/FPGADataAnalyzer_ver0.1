@@ -16,7 +16,7 @@ namespace DataAnalyzer_ver0._1.UI.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        private readonly FT232DataProcessor _dataProcessor;
+        private readonly IFT232DataProcessorService _dataProcessorService;
         private readonly IFT232DataReaderService _dataReaderService;
 
         private FPGADataModel _fpgaData;
@@ -44,9 +44,9 @@ namespace DataAnalyzer_ver0._1.UI.ViewModels
 
         public ICommand StartDataAcquisitionCommand { get; set; }
 
-        public MainViewModel(IFT232DataReaderService dataReaderService)
+        public MainViewModel(IFT232DataReaderService dataReaderService, IFT232DataProcessorService dataProcessor)
         {
-            _dataProcessor = new FT232DataProcessor();
+            _dataProcessorService = dataProcessor;
             _dataReaderService = dataReaderService;
 
             StartDataAcquisitionCommand = new RelayCommand(async () => await StartDataAcquisition());
@@ -65,7 +65,7 @@ namespace DataAnalyzer_ver0._1.UI.ViewModels
                 byte[] rawData = await _dataReaderService.ReadGeneratedMockDataAsync((int)bufferSize);
 
                 //byte[] rawData = await _dataReaderService.ReadDataAsync(bufferSize);
-                var processedData = _dataProcessor.ProcessRawFT232Data(rawData);
+                var processedData = await _dataProcessorService.ProcessedDataAsync(rawData);
 
                 FPGAData = new FPGADataModel
                 {

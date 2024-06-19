@@ -30,15 +30,14 @@ namespace DataAnalyzer_ver0._1.UI
             
 
             base.OnStartup(e);
-
-            // Simulate FT232 handle (not used in mock data scenario)
+         
             IntPtr ftHandle = IntPtr.Zero;
 
-            // Create mock data reader service
             var ft232DataReaderService = new FT232DataReaderService(ftHandle);
+            var ft232DataProcessorService = new FT232DataProcessorService();
 
-            // Create main view model
-            var mainViewModel = new MainViewModel(ft232DataReaderService);
+
+            var mainViewModel = new MainViewModel(ft232DataReaderService, ft232DataProcessorService);
 
             // Create and show the main window
             var mainWindow = new MainWindow

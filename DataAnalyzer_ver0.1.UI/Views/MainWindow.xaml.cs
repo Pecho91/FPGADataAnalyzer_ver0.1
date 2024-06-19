@@ -28,10 +28,11 @@ namespace DataAnalyzer_ver0._1.UI.Views
             //IntPtr ftHandle = // Obtain your FT232 handle here
 
             IntPtr ftHandle = (IntPtr)100;
-            var ft232Helper = new FT232Helper((IntPtr)ftHandle);
+            //var ft232Helper = new FT232Helper((IntPtr)ftHandle);
             var ft232DataReaderService = new FT232DataReaderService(ftHandle);
+            var ft232DataProcessorService = new FT232DataProcessorService();
 
-            DataContext = new MainViewModel(ft232DataReaderService);
+            DataContext = new MainViewModel(ft232DataReaderService, ft232DataProcessorService);
         }
     }
 }
