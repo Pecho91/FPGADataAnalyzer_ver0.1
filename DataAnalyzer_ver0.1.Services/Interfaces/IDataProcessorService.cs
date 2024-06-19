@@ -9,6 +9,6 @@ namespace DataAnalyzer_ver0._1.Services.Interfaces
 {
     public interface IDataProcessorService
     {
-        Task<ProcessedData> ProcessedDataAsync(byte[] rawData);
+        Task<USBProcessedData> ProcessedDataAsync(byte[] rawData);
     }
 }

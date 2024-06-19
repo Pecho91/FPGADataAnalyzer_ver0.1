@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAnalyzer_ver0._1.DataAnalyzer.DataProcessor.Data
+namespace DataAnalyzer_ver0._1.DataAnalyzer.DataProcessor.USBData
 {
-    public class DataReader
+    public class USBDataReader
     {
         public byte[] ReadDataFromUSB(string usbDevicePath)
         {
@@ -16,7 +16,7 @@ namespace DataAnalyzer_ver0._1.DataAnalyzer.DataProcessor.Data
 
         public byte[] ReadGeneratedMockData(int dataSize)
         {
-            return USBHelper.GenerateMockData(dataSize);
+            return USBHelper.GenerateMockDataFromUSB(dataSize);
         }
     }
 }

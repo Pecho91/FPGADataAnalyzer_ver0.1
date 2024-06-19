@@ -10,6 +10,8 @@ namespace DataAnalyzer_ver0._1.Common.Models
     public class FPGADataModel
     {
         public byte[] RawData { get; set; }
-        public ProcessedData ProcessedData { get; set; }
+
+        public FT232ProcessedData ProcessedDataFT232 { get; set; }
+        public USBProcessedData ProcessedDataUSB { get; set; }
     }
 }

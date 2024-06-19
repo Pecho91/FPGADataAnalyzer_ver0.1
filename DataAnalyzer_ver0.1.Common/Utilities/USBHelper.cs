@@ -21,7 +21,7 @@ namespace DataAnalyzer_ver0._1.Common.Utilities
             
         }
 
-        public static byte[] GenerateMockData(int dataSize)
+        public static byte[] GenerateMockDataFromUSB(int dataSize)
         {
             // Generate mock data with random values
             var random = new Random();

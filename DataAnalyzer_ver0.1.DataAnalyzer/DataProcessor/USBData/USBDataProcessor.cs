@@ -5,20 +5,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAnalyzer_ver0._1.DataAnalyzer.DataProcessor.Data
+namespace DataAnalyzer_ver0._1.DataAnalyzer.DataProcessor.USBData
 {
-    public class DataProcessor
+    public class USBDataProcessor
     {
-        public ProcessedData ProcessRawData(byte[] rawData)
+        public USBProcessedData ProcessRawData(byte[] rawData)
         {
+
             double[] voltageLevels = new double[rawData.Length];
 
-            for(int i = 0; i < rawData.Length; i++)
+            for (int i = 0; i < rawData.Length; i++)
             {
-                voltageLevels[i] = rawData[i] * 1; //example conversion
+                voltageLevels[i] = rawData[i]; //example conversion
             }
 
-            return new ProcessedData
+            return new ProcessedDataUSB
             {
                 VoltageLevels = voltageLevels,
                 SamplingRate = 1000 //example sampling rate

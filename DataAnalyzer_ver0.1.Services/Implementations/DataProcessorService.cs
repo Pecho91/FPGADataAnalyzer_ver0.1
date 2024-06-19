@@ -1,5 +1,5 @@
 ﻿using DataAnalyzer_ver0._1.Common.Processing;
-using DataAnalyzer_ver0._1.DataAnalyzer.DataProcessor.Data;
+using DataAnalyzer_ver0._1.DataAnalyzer.DataProcessor.USBData;
 using DataAnalyzer_ver0._1.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -11,13 +11,13 @@ namespace DataAnalyzer_ver0._1.Services.Implementations
 {
     public class DataProcessorService : IDataProcessorService
     {
-        private readonly DataProcessor _dataProcessor;
+        private readonly USBDataProcessor _dataProcessor;
 
         public DataProcessorService()
         {
             _dataProcessor = new DataProcessor();
         }
-        public async Task<ProcessedData> ProcessedDataAsync(byte[] rawData)
+        public async Task<USBProcessedData> ProcessedDataAsync(byte[] rawData)
         {
             return await Task.Run(() => _dataProcessor.ProcessRawData(rawData));
         }

@@ -86,16 +86,16 @@ namespace DataAnalyzer_ver0._1.UI.ViewModels
         {
             //const string usbPath = "Path_to_your_usb_device";
 
-            int dataSize = 500;
-            double amplitude = 1.0;
-            double frequency = 10.0;
-            double samplingRate = 1000;
-            double duration = dataSize / samplingRate;
+            //int dataSize = 500;
+            //double amplitude = 1.0;
+            //double frequency = 10.0;
+            //double samplingRate = 1000;
+            //double duration = dataSize / samplingRate;
 
             try
             {
-                double[] waveform = SinusoidalDataGenerator.GenerateSinusoidalWaveform(amplitude, frequency, samplingRate, duration);
-                byte[] rawData = await DataAcquisitionSimulator.SimulateDataAcquisition(waveform);
+                //double[] waveform = SinusoidalDataGenerator.GenerateSinusoidalWaveform(amplitude, frequency, samplingRate, duration);
+                //byte[] rawData = await DataAcquisitionSimulator.SimulateDataAcquisition(waveform);
 
                 //byte[] rawData = await _dataReaderService.ReadGeneratedMockDataAsync(dataSize);
                 var processedData = await _dataProcessorService.ProcessedDataAsync(rawData);

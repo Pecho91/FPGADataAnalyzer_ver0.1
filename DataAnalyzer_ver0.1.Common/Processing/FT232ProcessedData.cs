@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace DataAnalyzer_ver0._1.Common.Processing
 {
-    public class ProcessedData
+    public class FT232ProcessedData
     {
-        public double[] VoltageLevels { get; set; }
-        public double SamplingRate { get; set; }
+        public bool[] BooleanLevels { get; set; }
     }
 }
