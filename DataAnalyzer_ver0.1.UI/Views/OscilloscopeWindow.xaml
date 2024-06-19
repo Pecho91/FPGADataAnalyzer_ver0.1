@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DataAnalyzer_ver0._1.UI.Views"
         xmlns:viewModel="clr-namespace:DataAnalyzer_ver0._1.UI.ViewModels"
-xmlns:oxy="http://oxyplot.org/wpf"
+        xmlns:oxy="http://oxyplot.org/wpf"
         mc:Ignorable="d"
         Title="OscilloscopeWindow" Height="450" Width="800">
 

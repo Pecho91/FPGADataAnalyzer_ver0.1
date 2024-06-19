@@ -25,11 +25,11 @@ namespace DataAnalyzer_ver0._1.UI.Views
         {
             InitializeComponent();
 
-            //var dataAnalyzerService = new DataAnalyzerService();
+            var dataAnalyzerService = new USBDataAnalyzerService();
             var dataProcessorService = new USBDataProcessorService();
             var dataReaderService = new USBDataReaderService();
 
-            DataContext = new OsciloscopeViewModel(dataAnalyzerService, dataProcessorService, dataReaderService);
+            DataContext = new OscilloscopeViewModel(dataAnalyzerService, dataProcessorService, dataReaderService);
         }
     }
 }

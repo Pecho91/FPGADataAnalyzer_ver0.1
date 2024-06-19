@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using DataAnalyzer_ver0._1.Services.Simulation;
 
 
 namespace DataAnalyzer_ver0._1.UI.ViewModels
@@ -30,7 +31,7 @@ namespace DataAnalyzer_ver0._1.UI.ViewModels
             {
                 _fpgaData = value;
                 OnPropertyChanged(nameof(FPGAData));
-                UpdatePlot(FPGAData.ProcessedData.VoltageLevels);
+                UpdatePlot(FPGAData.ProcessedDataUSB.VoltageLevels);
             }
         }
 
@@ -68,7 +69,7 @@ namespace DataAnalyzer_ver0._1.UI.ViewModels
         }
         public ICommand StartDataAcquisitionCommand { get; set; }
 
-        public MainViewModel(IUSBDataAnalyzerService dataAnalyzerService, IUSBDataProcessorService processorService, IUSBDataReaderService readerService)
+        public OscilloscopeViewModel(IUSBDataAnalyzerService dataAnalyzerService, IUSBDataProcessorService processorService, IUSBDataReaderService readerService)
         {
             _dataAnalyzerService = dataAnalyzerService;
             _dataProcessorService = processorService;
@@ -86,16 +87,16 @@ namespace DataAnalyzer_ver0._1.UI.ViewModels
         {
             //const string usbPath = "Path_to_your_usb_device";
 
-            //int dataSize = 500;
-            //double amplitude = 1.0;
-            //double frequency = 10.0;
-            //double samplingRate = 1000;
-            //double duration = dataSize / samplingRate;
+            int dataSize = 500;
+            double amplitude = 1.0;
+            double frequency = 10.0;
+            double samplingRate = 1000;
+            double duration = dataSize / samplingRate;
 
             try
             {
-                //double[] waveform = SinusoidalDataGenerator.GenerateSinusoidalWaveform(amplitude, frequency, samplingRate, duration);
-                //byte[] rawData = await DataAcquisitionSimulator.SimulateDataAcquisition(waveform);
+                double[] waveform = SinusoidalDataGenerator.GenerateSinusoidalWaveform(amplitude, frequency, samplingRate, duration);
+                byte[] rawData = await DataAcquisitionSimulator.SimulateDataAcquisition(waveform);
 
                 //byte[] rawData = await _dataReaderService.ReadGeneratedMockDataAsync(dataSize);
                 var processedData = await _dataProcessorService.ProcessedDataAsync(rawData);
@@ -104,7 +105,7 @@ namespace DataAnalyzer_ver0._1.UI.ViewModels
                 FPGAData = new FPGADataModel
                 {
                     RawData = rawData,
-                    ProcessedData = processedData
+                    ProcessedDataUSB = processedData
                 };
 
                 PeakVoltage = analysisResult.PeakVoltage;

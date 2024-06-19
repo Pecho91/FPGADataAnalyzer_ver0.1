@@ -16,8 +16,6 @@
             <Button Command="{Binding StartDataAcquisitionCommand}" 
                     Content="Start Data Acquisition"/>
 
-            <TextBlock Text="{Binding PeakVoltage}" />
-            <TextBlock Text="{Binding AverageVoltage}" />
             <oxy:PlotView Model="{Binding PlotModel}" Height="300" />
             
         </StackPanel>

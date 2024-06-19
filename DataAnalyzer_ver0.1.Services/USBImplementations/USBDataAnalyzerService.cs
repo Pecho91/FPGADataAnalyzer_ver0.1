@@ -11,16 +11,16 @@ namespace DataAnalyzer_ver0._1.Services.Implementations
 {
     public class USBDataAnalyzerService : IUSBDataAnalyzerService
     {
-        private readonly USBDataAnalyzerProcessor _dataAnalyzer;
+        private readonly USBDataAnalyzerProcessor _usbDataAnalyzer;
 
         public USBDataAnalyzerService()
         {
-            _dataAnalyzer = new USBDataAnalyzerProcessor();
+            _usbDataAnalyzer = new USBDataAnalyzerProcessor();
         }
 
-        public async Task<USBAnalysisResult> AnalyzeDataAsync(ProcessedData processedData)
+        public async Task<USBAnalysisResult> AnalyzeDataAsync(USBProcessedDataModel usbProcessedData)
         {
-            return await Task.Run(() => _dataAnalyzer.AnalyzeData(processedData));
+            return await Task.Run(() => _usbDataAnalyzer.AnalyzeUSBData(usbProcessedData));
         }
     }
 }

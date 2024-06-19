@@ -9,7 +9,7 @@ namespace DataAnalyzer_ver0._1.DataAnalyzer.DataProcessor.USBData
 {
     public class USBDataProcessor
     {
-        public USBProcessedDataModel ProcessRawData(byte[] rawData)
+        public USBProcessedDataModel ProcessRawUSBData(byte[] rawData)
         {
 
             double[] voltageLevels = new double[rawData.Length];

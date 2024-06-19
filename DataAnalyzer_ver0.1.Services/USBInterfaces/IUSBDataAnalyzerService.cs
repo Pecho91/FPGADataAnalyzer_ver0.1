@@ -10,6 +10,6 @@ namespace DataAnalyzer_ver0._1.Services.Interfaces
 {
     public interface IUSBDataAnalyzerService
     {
-        Task<USBAnalysisResult> AnalyzeDataAsync(ProcessedData processedData);
+        Task<USBAnalysisResult> AnalyzeDataAsync(USBProcessedDataModel usbProcessedData);
     }
 }

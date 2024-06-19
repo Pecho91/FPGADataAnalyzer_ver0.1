@@ -9,7 +9,7 @@ namespace DataAnalyzer_ver0._1.DataAnalyzer.DataProcessor.FT232Data
 {
     public class FT232DataProcessor
     {
-        public FT232ProcessedDataModel ProcessRawData(byte[] rawData)
+        public FT232ProcessedDataModel ProcessRawFT232Data(byte[] rawData)
         {
             bool[] booleanLevels = rawData.Select(b => b > 0).ToArray();
 

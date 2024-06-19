@@ -19,7 +19,7 @@ namespace DataAnalyzer_ver0._1.Services.FT232Implementations
         }
         public async Task<FT232ProcessedDataModel> ProcessedDataAsync(byte[] rawData)
         {
-            return await Task.Run(() => _ft232DataProcessor.ProcessRawData(rawData));
+            return await Task.Run(() => _ft232DataProcessor.ProcessRawFT232Data(rawData));
         }
     }
 }

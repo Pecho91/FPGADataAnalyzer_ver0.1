@@ -1,4 +1,7 @@
-﻿using DataAnalyzer_ver0._1.Services.Implementations;
+﻿using DataAnalyzer_ver0._1.Common.Utilities;
+using DataAnalyzer_ver0._1.DataAnalyzer.DataProcessor.FT232Data;
+using DataAnalyzer_ver0._1.Services.FT232Implementations;
+using DataAnalyzer_ver0._1.Services.Implementations;
 using DataAnalyzer_ver0._1.UI.ViewModels;
 using System.Text;
 using System.Windows;
@@ -22,11 +25,13 @@ namespace DataAnalyzer_ver0._1.UI.Views
         {
             InitializeComponent();
 
-            var dataAnalyzerService = new USBDataAnalyzerService();
-            var dataProcessorService = new USBDataProcessorService();
-            var dataReaderService = new USBDataReaderService();
+            //IntPtr ftHandle = // Obtain your FT232 handle here
 
-            DataContext = new MainViewModel(dataAnalyzerService, dataProcessorService, dataReaderService);
+            IntPtr ftHandle = (IntPtr)100;
+            var ft232Helper = new FT232Helper((IntPtr)ftHandle);
+            var ft232DataReaderService = new FT232DataReaderService(ftHandle);
+
+            DataContext = new MainViewModel(ft232DataReaderService);
         }
     }
 }

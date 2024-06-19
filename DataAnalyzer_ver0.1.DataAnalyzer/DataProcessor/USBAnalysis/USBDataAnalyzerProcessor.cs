@@ -9,13 +9,13 @@ namespace DataAnalyzer_ver0._1.DataAnalyzer.DataProcessor.Analysis
 {
     public class USBDataAnalyzerProcessor
     {
-        public USBAnalysisResult AnalyzeData(USBProcessedDataModel processedData)
+        public USBAnalysisResult AnalyzeUSBData(USBProcessedDataModel usbProcessedData)
         {
 
             return new USBAnalysisResult
             {
-                PeakVoltage = processedData.VoltageLevels.Max(),
-                AverageVoltage = processedData.VoltageLevels.Average(),
+                PeakVoltage = usbProcessedData.VoltageLevels.Max(),
+                AverageVoltage = usbProcessedData.VoltageLevels.Average(),
             };
         }
 

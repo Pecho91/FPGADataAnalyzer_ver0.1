@@ -19,7 +19,7 @@ namespace DataAnalyzer_ver0._1.Services.Implementations
         }
         public async Task<USBProcessedDataModel> ProcessedDataAsync(byte[] rawData)
         {
-            return await Task.Run(() => _usbDataProcessor.ProcessRawData(rawData));
+            return await Task.Run(() => _usbDataProcessor.ProcessRawUSBData(rawData));
         }
     }
 }
